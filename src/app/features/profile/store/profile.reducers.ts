@@ -19,14 +19,9 @@ const initialState: ProfileState = {};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => {
-
-        return { ...state, user: dummyProfile };
-
-    })
+    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile }))
 );
 
-// eslint-disable  prefer-arrow/prefer-arrow-functions
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
 
     return reducer(state, action);

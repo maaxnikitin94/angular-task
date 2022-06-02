@@ -7,47 +7,39 @@ import { RoutingService } from '../routing.service';
 @Injectable()
 export class RoutingEffects {
 
-    go$ = createEffect(() => {
+    go$ = createEffect(() => this.actions$.pipe(
+        ofType(routingActions.go),
+        map(({ path, queryParams, url }) => {
 
-        return this.actions$.pipe(
-            ofType(routingActions.go),
-            map(({ path, queryParams, url }) => {
+            if (url) {
 
-                if (url) {
+                if (queryParams) {
 
-                    if (queryParams) {
+                    this.routingService.toUrl(url, { queryParams });
 
-                        this.routingService.toUrl(url, { queryParams });
+                } else {
 
-                    } else {
-
-                        this.routingService.toUrl(url);
-
-                    }
-
-                } else if (path) {
-
-                    this.routingService.toRoute(path, { queryParams: queryParams || null });
+                    this.routingService.toUrl(url);
 
                 }
 
-            })
-        );
+            } else if (path) {
 
-    }, { dispatch: false });
+                this.routingService.toRoute(path, { queryParams: queryParams || null });
 
-    reload$ = createEffect(() => {
+            }
 
-        return this.actions$.pipe(
-            ofType(routingActions.reload),
-            tap(() => {
+        })
+    ), { dispatch: false });
 
-                this.routingService.reload();
+    reload$ = createEffect(() => this.actions$.pipe(
+        ofType(routingActions.reload),
+        tap(() => {
 
-            })
-        );
+            this.routingService.reload();
 
-    }, { dispatch: false });
+        })
+    ), { dispatch: false });
 
     constructor (private actions$: Actions, private routingService: RoutingService) {}
 

@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'crx-app-logo',
-    styleUrls: ['./app-logo.less'],
+    styleUrls: ['./app-logo.scss'],
     templateUrl: './app-logo.html'
 })
 export class AppLogoComponent implements OnInit {

@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MomentModule } from 'ngx-moment';
 import { AppLogoComponent } from './app-logo';
 import { FooterComponent } from './footer';
 import { HeaderComponent } from './header';
@@ -16,9 +15,6 @@ import { PageNotFoundComponent } from './page-not-found';
         PageComponent,
         PageNotFoundComponent
     ],
-    entryComponents: [
-        PageNotFoundComponent
-    ],
     exports: [
         AppLogoComponent,
         FooterComponent,
@@ -28,9 +24,7 @@ import { PageNotFoundComponent } from './page-not-found';
     ],
     imports: [
         CommonModule,
-        MomentModule,
         RouterModule
-    ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    ]
 })
 export class LayoutModule {}

@@ -1,0 +1,65 @@
+@import 'utils';
+
+:host {
+    display: inline-block;
+}
+
+.logo {
+    display: block;
+}
+
+img {
+    width: 100%;
+}
+
+:host-context(.header, crx-market-reports-header) {
+    .logo {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        flex: 0 0 auto;
+        width: 117px;
+    }
+}
+
+:host-context(.header) {
+    .logo {
+        height: 100%;
+
+        @media #{$tabletLandscapeDownForHeader} {
+            justify-content: center;
+        }
+    }
+
+    img {
+        max-height: 39px;
+
+        @media #{$mobile} {
+            max-height: 25px;
+        }
+    }
+}
+
+:host-context(crx-market-reports-header) {
+    .logo {
+        width: auto;
+
+        img {
+            height: 39px;
+
+            @media #{$tabletPortraitDown} {
+                height: 25px;
+            }
+        }
+    }
+}
+
+:host-context(.welcome-page) {
+    img {
+        max-height: 55px;
+
+        @media #{$mobile} {
+            max-height: 35px;
+        }
+    }
+}

@@ -7,9 +7,6 @@ import { ProfileModule } from './profile/profile.module';
     declarations: [
         HomePageComponent
     ],
-    entryComponents: [
-        HomePageComponent
-    ],
     exports: [
         HomePageComponent
     ],

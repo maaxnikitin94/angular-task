@@ -27,19 +27,8 @@ export const initialState: State = {
 
 export const reducer = createReducer(
     initialState,
-    on(routingActions.reload, (state) => {
-
-        return { ...state, inProgress: false };
-
-    }),
-    on(routingActions.start, (state) => {
-
-        return { ...state, inProgress: true };
-
-    }),
-    on(routingActions.success, (state, payload) => {
-
-        return { ...state, ...payload, inProgress: false, prevRoute: state.currentRoute };
-
-    })
+    on(routingActions.reload, (state) => ({ ...state, inProgress: false })),
+    on(routingActions.start, (state) => ({ ...state, inProgress: true })),
+    on(routingActions.success, (state, payload) =>
+        ({ ...state, ...payload, inProgress: false, prevRoute: state.currentRoute }))
 );

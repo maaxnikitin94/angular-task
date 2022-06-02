@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'crx-footer',
-    styleUrls: ['./footer.less'],
+    styleUrls: ['./footer.scss'],
     templateUrl: './footer.html'
 })
 export class FooterComponent {

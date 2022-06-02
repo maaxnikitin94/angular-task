@@ -1,0 +1,18 @@
+# Add files here to ignore them from prettier formatting
+
+build
+dist
+coverage
+
+integrations
+
+.angular
+.vscode
+.github
+
+*.css
+*.js
+*.json
+*.ts
+*.md
+*.scss

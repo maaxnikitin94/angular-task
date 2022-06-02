@@ -6,7 +6,7 @@ import { getUserProfile } from '@store/selectors';
 
 @Component({
     selector: 'crx-profile-detail',
-    styleUrls: ['./profile-detail.component.less'],
+    styleUrls: ['./profile-detail.component.scss'],
     templateUrl: './profile-detail.component.html'
 })
 export class ProfileDetailComponent implements OnInit {

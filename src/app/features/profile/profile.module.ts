@@ -12,9 +12,6 @@ import { getProfileReducer } from './store/profile.reducers';
     declarations: [
         ProfileDetailComponent
     ],
-    entryComponents: [
-        ProfileDetailComponent
-    ],
     exports: [
         ProfileDetailComponent
     ],

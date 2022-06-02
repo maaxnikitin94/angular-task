@@ -8,11 +8,11 @@ import { appRoutes } from '../../app.routes';
     ],
     imports: [
         RouterModule.forRoot(appRoutes, {
-    enableTracing: false,
-    onSameUrlNavigation: 'reload',
-    paramsInheritanceStrategy: 'always',
-    relativeLinkResolution: 'legacy'
-})
+            enableTracing: false,
+            onSameUrlNavigation: 'reload',
+            paramsInheritanceStrategy: 'always',
+            relativeLinkResolution: 'legacy'
+        })
     ]
 })
 export class RoutingModule {}

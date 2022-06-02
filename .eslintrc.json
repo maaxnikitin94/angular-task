@@ -1,51 +1,115 @@
 {
-  "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
-  "overrides": [
-    {
-      "files": [
-        "*.ts"
-      ],
-      "parserOptions": {
-        "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
-        ],
-        "createDefaultProgram": true
-      },
-      "extends": [
-        "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ],
-      "rules": {
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "prefix": "crx",
-            "style": "kebab-case",
-            "type": "element"
-          }
-        ],
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "prefix": "crx",
-            "style": "camelCase",
-            "type": "attribute"
-          }
-        ]
-      }
-    },
-    {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
-      "rules": {}
-    }
-  ]
+    "root": true,
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "extends": [
+                "plugin:@angular-eslint/recommended",
+                "plugin:@angular-eslint/template/process-inline-templates"
+            ],
+            "rules": {
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "prefix": "crx",
+                        "style": "camelCase",
+                        "type": "attribute"
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "prefix": "crx",
+                        "style": "kebab-case",
+                        "type": "element"
+                    }
+                ],
+                "@angular-eslint/use-pipe-transform-interface": ["off"], // currently broken
+                "@typescript-eslint/adjacent-overload-signatures": ["off"],
+                "@typescript-eslint/ban-types": ["error"],
+                "@typescript-eslint/member-ordering": ["off"],
+                "@typescript-eslint/naming-convention": [
+                    "error",
+                    {
+                        "selector": "property",
+                        "format": ["camelCase", "PascalCase", "snake_case"]
+                    },
+                    {
+                        "selector": "property",
+                        "modifiers": ["readonly"],
+                        "format": ["UPPER_CASE"]
+                    },
+                    {
+                        "selector": "property",
+                        "modifiers": ["requiresQuotes"],
+                        "format": null
+                    }
+                ],
+                "@typescript-eslint/no-empty-interface": ["off"],
+                "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
+                "arrow-body-style": ["error", "as-needed"],
+                "array-bracket-spacing": ["error"],
+                "arrow-parens": ["error"],
+                "arrow-spacing": ["error"],
+                "brace-style": ["error"],
+                "comma-dangle": ["error"],
+                "computed-property-spacing": ["error"],
+                "curly": ["error"],
+                "eol-last": ["error"],
+                "eqeqeq": ["error", "smart"],
+                "func-call-spacing": ["error"],
+                "function-call-argument-newline": ["error", "consistent"],
+                "function-paren-newline": ["error", "multiline"],
+                "indent": [
+                    "error",
+                    4,
+                    {
+                        "MemberExpression": 0,
+                        "SwitchCase": 1
+                    }
+                ],
+                "key-spacing": ["error", { "afterColon": true, "beforeColon": false }],
+                "linebreak-style": ["error"],
+                "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+                "max-len": ["error", 120, { "ignoreTemplateLiterals": true, "ignoreRegExpLiterals": true }],
+                "new-parens": ["error"],
+                "no-caller": ["error"],
+                "no-case-declarations": ["off"],
+                "no-empty": ["error", { "allowEmptyCatch": true }],
+                "no-eval": ["error"],
+                "no-extra-boolean-cast": ["error"],
+                "no-multiple-empty-lines": [
+                    "error",
+                    {
+                        "max": 1,
+                        "maxEOF": 0,
+                        "maxBOF": 0
+                    }
+                ],
+                "no-var": ["error"],
+                "no-unused-expressions": ["error"],
+                "object-curly-spacing": ["error", "always"],
+                "object-shorthand": ["error", "always"],
+                "operator-linebreak": ["error", "before"],
+                "padded-blocks": ["error"],
+                "prefer-arrow-callback": ["error"],
+                "prefer-const": ["error"],
+                "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+                "quote-props": ["error", "as-needed"],
+                "semi": ["error"],
+                "sort-keys": ["error", "asc", { "caseSensitive": false, "natural": true }],
+                "space-before-blocks": ["error"],
+                "space-before-function-paren": ["error"],
+                "space-in-parens": ["error"],
+                "space-infix-ops": ["error"],
+                "spaced-comment": ["error"]
+            }
+        },
+        {
+            "files": ["*.html"],
+            "plugins": ["@angular-eslint/template"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
+            "rules": {}
+        }
+    ]
 }

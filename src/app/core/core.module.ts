@@ -1,7 +1,7 @@
 import { LayoutModule as AngularLayoutModule } from '@angular/cdk/layout';
 import { CommonModule, Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
-import { NgModule, NgModuleFactoryLoader, Optional, SkipSelf, SystemJsNgModuleLoader } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { AppStoreModule } from '@store/store.module';
 import { LayoutModule } from './layout/layout.module';
 import { moduleImportGuard } from './module-import-guard';
@@ -24,7 +24,6 @@ import { RoutingModule } from './routing/routing.module';
     providers: [
         Location,
         { provide: LocationStrategy, useClass: PathLocationStrategy },
-        { provide: NgModuleFactoryLoader, useClass: SystemJsNgModuleLoader },
         { provide: 'Window', useValue: window }
     ]
 })

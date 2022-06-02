@@ -6,24 +6,14 @@ export interface AppState {
     routing: fromRouting.State;
 }
 
-export const APP_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<AppState>>('App Reducers', {
-    factory: () => {
+export const APP_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<AppState>>(
+    'App Reducers',
+    { factory: () => ({ routing: fromRouting.reducer }) }
+);
 
-        return { routing: fromRouting.reducer };
-
-    }
-});
-
-// eslint-disable  prefer-arrow/prefer-arrow-functions
 export function logger (reducer: ActionReducer<AppState>): ActionReducer<AppState> {
 
-    return (state: AppState, action: any): AppState => {
-
-        // console.log('%c NGRX action ', loggerStyles, action, state);
-
-        return reducer(state, action);
-
-    };
+    return (state: AppState, action: any): AppState => reducer(state, action);
 
 }
 

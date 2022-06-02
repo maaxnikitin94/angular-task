@@ -2,35 +2,15 @@ import { ActivatedRouteSnapshot } from '@angular/router';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { State } from './routing.reducers';
 
-const currentRoute = (state: State): ActivatedRouteSnapshot => {
+const currentRoute = (state: State): ActivatedRouteSnapshot => state.currentRoute;
 
-    return state.currentRoute;
+const currentRouteName = (state: State): string => state.name;
 
-};
+const inProgress = (state: State): boolean => state.inProgress;
 
-const currentRouteName = (state: State): string => {
+const params = (state: State): Record<string, string> => state.params;
 
-    return state.name;
-
-};
-
-const inProgress = (state: State): boolean => {
-
-    return state.inProgress;
-
-};
-
-const params = (state: State): Record<string, string> => {
-
-    return state.params;
-
-};
-
-const prevRoute = (state: State): ActivatedRouteSnapshot => {
-
-    return state.prevRoute;
-
-};
+const prevRoute = (state: State): ActivatedRouteSnapshot => state.prevRoute;
 
 const prevUrl = (state: State): string => {
 
@@ -43,17 +23,9 @@ const prevUrl = (state: State): string => {
 
 };
 
-const queryParams = (state: State): Record<string, string> => {
+const queryParams = (state: State): Record<string, string> => state.queryParams;
 
-    return state.queryParams;
-
-};
-
-const url = (state: State): string => {
-
-    return state.url;
-
-};
+const url = (state: State): string => state.url;
 
 export const getRouterState = createFeatureSelector<State>('routing');
 

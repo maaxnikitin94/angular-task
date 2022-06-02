@@ -19,9 +19,7 @@ import { AppState } from '@store/reducers';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class RoutingService {
 
     // I suggest refactoring this to be a public ReplaySubject
@@ -61,22 +59,14 @@ export class RoutingService {
 
     get end$ (): Observable<Event> {
 
-        return this.router.events.pipe(filter((event) => {
-
-            return event instanceof NavigationEnd || event instanceof NavigationError
-                || event instanceof NavigationCancel;
-
-        }));
+        return this.router.events.pipe(filter((event) => event instanceof NavigationEnd
+            || event instanceof NavigationError || event instanceof NavigationCancel));
 
     }
 
     get error$ (): Observable<Event> {
 
-        return this.router.events.pipe(filter((event) => {
-
-            return event instanceof NavigationError;
-
-        }));
+        return this.router.events.pipe(filter((event) => event instanceof NavigationError));
 
     }
 
@@ -130,31 +120,19 @@ export class RoutingService {
 
     get routesRecognized$ (): Observable<Event> {
 
-        return this.router.events.pipe(filter((event) => {
-
-            return event instanceof RoutesRecognized;
-
-        }));
+        return this.router.events.pipe(filter((event) => event instanceof RoutesRecognized));
 
     }
 
     get start$ (): Observable<Event> {
 
-        return this.router.events.pipe(filter((event) => {
-
-            return event instanceof NavigationStart;
-
-        }));
+        return this.router.events.pipe(filter((event) => event instanceof NavigationStart));
 
     }
 
     get success$ (): Observable<Event> {
 
-        return this.router.events.pipe(filter((event) => {
-
-            return event instanceof NavigationEnd;
-
-        }));
+        return this.router.events.pipe(filter((event) => event instanceof NavigationEnd));
 
     }
 
@@ -213,9 +191,8 @@ export class RoutingService {
 
     }
 
-    getRouteParams (snapshot?: ActivatedRouteSnapshot): Record<string, string> {
+    getRouteParams (): Record<string, string> {
 
-        snapshot = snapshot || this.childRoute;
         const params: Record<string, string> = {};
         this.childRoute.paramMap.keys.forEach((key: string) => {
 

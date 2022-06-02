@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RANGES } from './screen.constants';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ScreenService {
 
     isLaptop$: Observable<boolean>;
@@ -103,11 +101,7 @@ export class ScreenService {
     private observe$ (breakpoint: string): Observable<boolean> {
 
         return this.breakpointObserver.observe(breakpoint).pipe(
-            map((state: BreakpointState) => {
-
-                return state.matches;
-
-            }),
+            map((state: BreakpointState) => state.matches),
             shareReplay()
         );
 

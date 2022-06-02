@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
     selector: 'crx-page-not-found',
-    styleUrls: ['./page-not-found.less'],
+    styleUrls: ['./page-not-found.scss'],
     templateUrl: './page-not-found.html'
 })
 export class PageNotFoundComponent implements OnDestroy, OnInit {
