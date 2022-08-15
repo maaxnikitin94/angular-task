@@ -1,13 +1,13 @@
-h1 {
-    text-align: center;
-}
-
-.users-link{
+.back-link{
     text-decoration: none;
     font-size:25px;
-    color: white;
+    color: gray;
     font-weight: 600;
 }
-.users-link:hover{
+.back-link:hover{
     color:black;
+}
+
+.table-col {
+    width: 150px;
 }

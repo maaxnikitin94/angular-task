@@ -2,24 +2,24 @@
     <div class="header">
         <crx-header pageTitle="Profile Details"></crx-header>
     </div>
-    <mat-card *ngIf="user$ | async as user" class="card">
+    <mat-card *ngIf="(user$ | async)[0] as user" class="card">
         <mat-card-title-group>
             <mat-card-title>User Profile</mat-card-title>
-            <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
-            <img class="circle" mat-card-md-image [src]="user.picture" />
+            <mat-card-subtitle>{{ user.name.first }} {{ user.name.last }}</mat-card-subtitle>
+            <img class="circle" mat-card-md-image [src]="user.picture.medium" />
         </mat-card-title-group>
         <mat-card-content>
             <mat-list>
                 <mat-list-item>
-                    <span>Phone: </span><span>{{ user.phoneNumber }}</span>
+                    <span>Phone: </span><span>{{ user.phone }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>Cell: </span><span>{{ user.cellNumber }}</span>
+                    <span>Cell: </span><span>{{ user.cell }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>City: </span><span>{{ user.city }}, {{ user.state }}</span>
+                    <span>City: </span><span>{{ user.location.city }}, {{ user.location.state }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
@@ -27,7 +27,7 @@
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>Date of Birth: </span><span>{{ user.dateOfBirth }}</span>
+                    <span>Date of Birth: </span><span>{{ user.dob.date | date: 'mediumDate' }}</span>
                 </mat-list-item>
             </mat-list>
         </mat-card-content>
