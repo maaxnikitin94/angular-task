@@ -2,32 +2,32 @@
     <div class="header">
         <crx-header pageTitle="Profile Details"></crx-header>
     </div>
-    <mat-card *ngIf="(user$ | async)[0] as user" class="card">
+    <mat-card *ngIf="profile$ | async as profile" class="card">
         <mat-card-title-group>
             <mat-card-title>User Profile</mat-card-title>
-            <mat-card-subtitle>{{ user.name.first }} {{ user.name.last }}</mat-card-subtitle>
-            <img class="circle" mat-card-md-image [src]="user.picture.medium" />
+            <mat-card-subtitle>{{ profile.name.first }} {{ profile.name.last }}</mat-card-subtitle>
+            <img class="circle" mat-card-md-image [src]="profile.picture.medium" />
         </mat-card-title-group>
         <mat-card-content>
             <mat-list>
                 <mat-list-item>
-                    <span>Phone: </span><span>{{ user.phone }}</span>
+                    <span>Phone: </span><span>{{ profile.phone }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>Cell: </span><span>{{ user.cell }}</span>
+                    <span>Cell: </span><span>{{ profile.cell }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>City: </span><span>{{ user.location.city }}, {{ user.location.state }}</span>
+                    <span>City: </span><span>{{ profile.location.city }}, {{ profile.location.state }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>Email: </span><span>{{ user.email }}</span>
+                    <span>Email: </span><span>{{ profile.email }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>Date of Birth: </span><span>{{ user.dob.date | date: 'mediumDate' }}</span>
+                    <span>Date of Birth: </span><span>{{ profile.dob.date | date: 'mediumDate' }}</span>
                 </mat-list-item>
             </mat-list>
         </mat-card-content>

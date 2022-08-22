@@ -153,7 +153,8 @@ export class RoutingService {
         private router: Router,
         private route: ActivatedRoute,
         private store: Store<AppState>
-    ) {}
+    ) {
+    }
 
     getQueryParam (key: string): string {
 

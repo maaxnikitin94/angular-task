@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { IUsers } from '@features/users-page/interfaces/users';
 import { UsersService } from '@features/users-page/services/users.service';
 import { getUsersPending, getUsersSuccess } from '@features/users-page/store/users.actions';
-import { catchError, first, map, mergeMap } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class UsersEffects {
 
     getUsers$ = createEffect(() =>
         this.action$.pipe(
-            first(),
             ofType(getUsersPending),
-            mergeMap(() =>
-                this.usersService.getUsers().pipe(map((users) => getUsersSuccess(users.results)))),
-            catchError(() => EMPTY)
+            switchMap(() => this.usersService.getUsers()
+            .pipe(map((users: IUsers[]) => getUsersSuccess({ users }))))
         ));
 
     constructor (private action$: Actions, private usersService: UsersService) {

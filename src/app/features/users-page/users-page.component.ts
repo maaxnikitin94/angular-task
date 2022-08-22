@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { IUsers } from '@features/users-page/interfaces/users';
 import { getUsersPending } from '@features/users-page/store/users.actions';
+import { getUsersFromState } from '@features/users-page/store/users.selectors';
 import { Store } from '@ngrx/store';
-import { getUsersState } from '@features/users-page/store/users.selectors';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'crx-users-page',
@@ -13,12 +13,12 @@ import { map } from 'rxjs/operators';
 
 export class UsersPageComponent {
 
-    public users$: Observable<any>;
+    public users$: Observable<IUsers[]>;
 
     constructor (private store: Store) {
 
         this.store.dispatch(getUsersPending());
-        this.users$ = this.store.select(getUsersState).pipe(map((value) => Object.values(value).slice(0, -1)));
+        this.users$ = this.store.select(getUsersFromState);
 
     }
 

@@ -12,4 +12,5 @@ import { APP_REDUCER_TOKEN, metaReducers } from './reducers';
         StoreDevtoolsModule.instrument({ maxAge: 25 })
     ]
 })
-export class AppStoreModule {}
+export class AppStoreModule {
+}

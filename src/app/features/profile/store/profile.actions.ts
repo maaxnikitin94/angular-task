@@ -1,5 +1,8 @@
-import { createAction } from '@ngrx/store';
+import { IProfile } from '@features/profile/interfaces/profile';
+import { createAction, props } from '@ngrx/store';
 
-const initProfile = createAction('[Profile] Init');
-
-export const profileActions = { initProfile };
+export const getProfilePending = createAction('[Profile] Get Profile Pending');
+export const getProfileSuccess = createAction(
+    '[Profile] Get Profile Success',
+    props<{ profile?: IProfile }>()
+);

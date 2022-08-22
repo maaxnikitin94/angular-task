@@ -4,6 +4,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@core/layout/layout.module';
+import { ProfileEffects } from '@features/profile/store/profile.effects';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { ProfileDetailComponent } from './profile-detail';
 import { getProfileReducer } from './store/profile.reducers';
@@ -21,7 +23,9 @@ import { getProfileReducer } from './store/profile.reducers';
         MatCardModule,
         MatDividerModule,
         MatListModule,
-        StoreModule.forFeature('profile', getProfileReducer)
+        StoreModule.forFeature('profile', getProfileReducer),
+        EffectsModule.forFeature([ProfileEffects])
     ]
 })
-export class ProfileModule { }
+export class ProfileModule {
+}

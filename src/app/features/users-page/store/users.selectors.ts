@@ -1,4 +1,5 @@
+import { UsersState } from '@features/users-page/interfaces/users-state';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-export const getUserState = createFeatureSelector('users');
-export const getUsersState = createSelector(getUserState, (state: any) => state);
+export const getUsersState = createFeatureSelector<UsersState>('users');
+export const getUsersFromState = createSelector(getUsersState, (state) => state.users);

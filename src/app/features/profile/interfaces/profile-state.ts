@@ -1,5 +1,5 @@
-import { UserProfile } from './user-profile';
+import { IProfile } from '@features/profile/interfaces/profile';
 
 export interface ProfileState {
-    user?: UserProfile;
+    profile?: IProfile;
 }

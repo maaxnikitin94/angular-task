@@ -2,12 +2,13 @@ h1 {
     text-align: center;
 }
 
-.users-link{
+.users-link {
     text-decoration: none;
-    font-size:25px;
+    font-size: 25px;
     color: white;
     font-weight: 600;
-}
-.users-link:hover{
-    color:black;
+
+    &:hover {
+        color: black;
+    }
 }

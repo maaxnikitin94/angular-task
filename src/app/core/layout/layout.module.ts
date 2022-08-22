@@ -27,4 +27,5 @@ import { PageNotFoundComponent } from './page-not-found';
         RouterModule
     ]
 })
-export class LayoutModule {}
+export class LayoutModule {
+}

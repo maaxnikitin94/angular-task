@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { IProfile } from '@features/profile/interfaces/profile';
+import { getProfilePending } from '@features/profile/store/profile.actions';
+import { getUserProfile } from '@features/profile/store/profile.selectors';
 import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions';
 import { AppState } from '@store/reducers';
-import { getUsersState } from '@features/users-page/store/users.selectors';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'crx-profile-detail',
@@ -14,17 +13,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileDetailComponent implements OnInit {
 
-    public user$: Observable<any>;
+    public profile$: Observable<IProfile>;
 
-    constructor (private store: Store<AppState>, private activeRoute: ActivatedRoute) {
+    constructor (private store: Store<AppState>) {
     }
 
     ngOnInit () {
 
-        const id = this.activeRoute.snapshot.params.id;
-        this.store.dispatch(profileActions.initProfile());
-        this.user$ = this.store.select(getUsersState)
-        .pipe(map((value) => Object.values(value).slice(0, -1).filter((val: any) => val.id.name === id)));
+        this.store.dispatch(getProfilePending());
+        this.profile$ = this.store.select(getUserProfile);
 
     }
 
