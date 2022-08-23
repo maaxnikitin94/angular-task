@@ -21,13 +21,13 @@ import { ProfileModule } from './profile/profile.module';
         UsersPageComponent
     ],
     imports: [
+        CommonModule,
+        EffectsModule.forFeature([UsersEffects]),
         LayoutModule,
         ProfileModule,
         RouterModule,
-        HttpClientModule,
-        EffectsModule.forFeature([UsersEffects]),
         StoreModule.forFeature('users', reducer),
-        CommonModule
+        HttpClientModule
     ]
 })
 export class FeaturesModule {

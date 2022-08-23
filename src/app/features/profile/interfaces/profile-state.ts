@@ -1,5 +1,5 @@
-import { IProfile } from '@features/profile/interfaces/profile';
+import { Profile } from '@features/profile/interfaces/profile';
 
 export interface ProfileState {
-    profile?: IProfile;
+    profile?: Profile;
 }

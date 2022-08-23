@@ -1,4 +1,4 @@
-export interface IUsers {
+export interface Users {
     cellNumber: string;
     city: string;
     dateOfBirth: string;

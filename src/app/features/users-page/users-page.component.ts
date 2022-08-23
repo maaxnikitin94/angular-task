@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IUsers } from '@features/users-page/interfaces/users';
+import { Users } from '@features/users-page/interfaces/users';
 import { getUsersPending } from '@features/users-page/store/users.actions';
 import { getUsersFromState } from '@features/users-page/store/users.selectors';
 import { Store } from '@ngrx/store';
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 
 export class UsersPageComponent {
 
-    public users$: Observable<IUsers[]>;
+    public users$: Observable<Users[]>;
 
     constructor (private store: Store) {
 

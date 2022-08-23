@@ -1,5 +1,5 @@
-import { IUsers } from '@features/users-page/interfaces/users';
+import { Users } from '@features/users-page/interfaces/users';
 
 export interface UsersState {
-    users?: IUsers[];
+    users?: Users[];
 }
