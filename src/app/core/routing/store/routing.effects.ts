@@ -41,6 +41,7 @@ export class RoutingEffects {
         })
     ), { dispatch: false });
 
-    constructor (private actions$: Actions, private routingService: RoutingService) {}
+    constructor (private actions$: Actions, private routingService: RoutingService) {
+    }
 
 }

@@ -15,4 +15,5 @@ import { appRoutes } from '../../app.routes';
         })
     ]
 })
-export class RoutingModule {}
+export class RoutingModule {
+}
