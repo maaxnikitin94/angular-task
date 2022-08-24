@@ -12,6 +12,7 @@
     overflow: auto;
     transition: opacity .25s ease-in;
     opacity: 1;
+
     &.with-background {
         background: url(/content/img/Los-Angeles-1600.jpg) no-repeat center;
         background-size: cover;
@@ -31,6 +32,7 @@
     height: 100vh;
 
     @include relative();
+
     &::before {
         content: '';
         z-index: 1;

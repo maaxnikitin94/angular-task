@@ -7,15 +7,18 @@ import { LayoutModule } from '@core/layout/layout.module';
 import { ProfileEffects } from '@features/profile/store/profile.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { LoadingComponent } from '../../shared/components/loading.component';
 import { ProfileDetailComponent } from './profile-detail';
 import { getProfileReducer } from './store/profile.reducers';
 
 @NgModule({
     declarations: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        LoadingComponent
     ],
     exports: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        LoadingComponent
     ],
     imports: [
         CommonModule,

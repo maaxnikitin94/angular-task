@@ -20,6 +20,24 @@ export class ScreenService {
     isTabletPortraitDown$: Observable<boolean>;
     isXs$: Observable<boolean>;
 
+    constructor (public breakpointObserver: BreakpointObserver) {
+
+        // Observers should be created once to allow usage with async pipe
+        this.isXs$ = this.observe$(RANGES.extraSmall);
+        this.isLaptop$ = this.observe$(RANGES.laptop);
+        this.isLaptopDown$ = this.observe$(RANGES.laptopDown);
+        this.isLaptopUp$ = this.observe$(RANGES.laptopUp);
+        this.isLg$ = this.observe$(RANGES.large);
+        this.isMd$ = this.observe$(RANGES.medium);
+        this.isMobile$ = this.observe$(RANGES.mobile);
+        this.isSm$ = this.observe$(RANGES.small);
+        this.isTablet$ = this.observe$(RANGES.tablet);
+        this.isTabletLandscapeDown$ = this.observe$(RANGES.tabletLandscapeDown);
+        this.isTabletPortrait$ = this.observe$(RANGES.tabletPortrait);
+        this.isTabletPortraitDown$ = this.observe$(RANGES.tabletPortraitDown);
+
+    }
+
     get isLaptop (): boolean {
 
         return this.isMatched(RANGES.laptop);
@@ -92,6 +110,18 @@ export class ScreenService {
 
     }
 
+    isBetween (from: number, to: number): boolean {
+
+        return this.isMatched(`(min-width: ${from}px) and (max-width: ${to}px)`);
+
+    }
+
+    isBetween$ (from: number, to: number): Observable<boolean> {
+
+        return this.observe$(`(min-width: ${from}px) and (max-width: ${to}px)`);
+
+    }
+
     private isMatched (breakpoint: string): boolean {
 
         return this.breakpointObserver.isMatched(breakpoint);
@@ -104,36 +134,6 @@ export class ScreenService {
             map((state: BreakpointState) => state.matches),
             shareReplay()
         );
-
-    }
-
-    constructor (public breakpointObserver: BreakpointObserver) {
-
-        // Observers should be created once to allow usage with async pipe
-        this.isXs$ = this.observe$(RANGES.extraSmall);
-        this.isLaptop$ = this.observe$(RANGES.laptop);
-        this.isLaptopDown$ = this.observe$(RANGES.laptopDown);
-        this.isLaptopUp$ = this.observe$(RANGES.laptopUp);
-        this.isLg$ = this.observe$(RANGES.large);
-        this.isMd$ = this.observe$(RANGES.medium);
-        this.isMobile$ = this.observe$(RANGES.mobile);
-        this.isSm$ = this.observe$(RANGES.small);
-        this.isTablet$ = this.observe$(RANGES.tablet);
-        this.isTabletLandscapeDown$ = this.observe$(RANGES.tabletLandscapeDown);
-        this.isTabletPortrait$ = this.observe$(RANGES.tabletPortrait);
-        this.isTabletPortraitDown$ = this.observe$(RANGES.tabletPortraitDown);
-
-    }
-
-    isBetween (from: number, to: number): boolean {
-
-        return this.isMatched(`(min-width: ${from}px) and (max-width: ${to}px)`);
-
-    }
-
-    isBetween$ (from: number, to: number): Observable<boolean> {
-
-        return this.observe$(`(min-width: ${from}px) and (max-width: ${to}px)`);
 
     }
 
