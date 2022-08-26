@@ -79,9 +79,11 @@
 
     .links a {
         margin: 0 10px;
+
         &:first-child {
             margin-left: 0;
         }
+
         &:last-child {
             margin-right: 0;
         }
@@ -131,6 +133,7 @@
 
         .copyright {
             margin: 0;
+
             span {
                 display: inline;
             }

@@ -1,0 +1,20 @@
+@mixin snack-style() {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+}
+
+::ng-deep .snack-style-red {
+    @include snack-style();
+    background-color: red;
+}
+
+::ng-deep .snack-style-green {
+    @include snack-style();
+    background-color: green;
+}
+
+::ng-deep .snack-style-yellow {
+    @include snack-style();
+    background-color: yellow;
+}
