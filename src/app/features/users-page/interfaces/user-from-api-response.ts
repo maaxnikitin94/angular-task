@@ -1,8 +1,8 @@
-export interface UserApiResponse {
-    results: UserApi[];
+export interface UserFromApiResponse {
+    results: UserFromApi[];
 }
 
-interface UserApi {
+interface UserFromApi {
     name: Name;
     location: Location;
     email: string;

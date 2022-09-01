@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Profile } from '@features/profile/interfaces/profile';
-import { UserApiResponse } from '@features/users-page/interfaces/user-api-response';
-import { Users } from '@features/users-page/interfaces/users';
+import { UserFromApiResponse } from '@features/users-page/interfaces/user-from-api-response';
+import { User } from '@features/users-page/interfaces/users';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -14,11 +14,11 @@ export class UsersService {
     constructor (private httpClient: HttpClient) {
     }
 
-    getUsers (): Observable<Users[]> {
+    getUsers (): Observable<User[]> {
 
         return this.httpClient
         .get('https://randomuser.me/api/?results=10&exc=gender,login,registered,nat&noinfo&seed=foobar')
-        .pipe(map(({ results }: UserApiResponse): Users[] => results.map((user) => ({
+        .pipe(map(({ results }: UserFromApiResponse): User[] => results.map((user) => ({
             cellNumber: user.cell,
             city: user.location.city,
             dateOfBirth: user.dob.date,
@@ -37,7 +37,7 @@ export class UsersService {
 
         return this.httpClient
         .get('https://randomuser.me/api/?results=1&exc=gender,login,registered,nat&noinfo&seed=foobar&' + id)
-        .pipe(map(({ results }: UserApiResponse): Profile => results[0]));
+        .pipe(map(({ results }: UserFromApiResponse): Profile => results[0]));
 
     }
 

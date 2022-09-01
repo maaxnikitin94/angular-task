@@ -23,11 +23,11 @@ import { ProfileModule } from './profile/profile.module';
     imports: [
         CommonModule,
         EffectsModule.forFeature([UsersEffects]),
+        HttpClientModule,
         LayoutModule,
         ProfileModule,
         RouterModule,
-        StoreModule.forFeature('users', reducer),
-        HttpClientModule
+        StoreModule.forFeature('users', reducer)
     ]
 })
 export class FeaturesModule {

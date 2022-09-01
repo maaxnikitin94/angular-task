@@ -2,32 +2,32 @@ export interface Profile {
     name: {
         title: string;
         first: string;
-        last: string
+        last: string;
     };
     location: {
         street: {
             number: number;
-            name: string
+            name: string;
         };
         city: string;
         state: string;
         country: string;
-        postcode: number
+        postcode: number;
     };
     email: string;
     dob: {
         date: string;
-        age: number
+        age: number;
     };
     phone: string;
     cell: string;
     id: {
         name: string;
-        value?: null | number
+        value?: null | number;
     };
     picture: {
         large: string;
         medium: string;
-        thumbnail: string
-    }
+        thumbnail: string;
+    };
 }
