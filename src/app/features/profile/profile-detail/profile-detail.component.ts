@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IProfile } from '@features/profile/interfaces/profile';
+import { Profile } from '@features/profile/interfaces/profile';
 import { getProfilePending } from '@features/profile/store/profile.actions';
 import { getUserProfile } from '@features/profile/store/profile.selectors';
 import { Store } from '@ngrx/store';
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class ProfileDetailComponent implements OnInit {
 
-    public profile$: Observable<IProfile>;
+    public profile$: Observable<Profile>;
 
     constructor (private store: Store<AppState>) {
     }

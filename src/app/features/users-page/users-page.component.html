@@ -1,13 +1,13 @@
 <a routerLink="/" class="back-link">Back To Home</a>
 <h1>List of all users:</h1>
-<table style="width: 1000px; border: 1px solid black">
+<table class="table-wrapper">
     <tr>
         <th>NAME</th>
     </tr>
     <tbody *ngIf="users$ | async as users">
         <tr *ngFor="let user of users">
             <th>
-                <a [routerLink]="['/profile/' + user.firstName]">{{ user.firstName }}</a>
+                <a [routerLink]="['/profile/' + user.id]">{{ user.firstName }}</a>
             </th>
         </tr>
     </tbody>
