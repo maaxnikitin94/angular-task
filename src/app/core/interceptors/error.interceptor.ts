@@ -1,8 +1,8 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NotificationService } from '@features/notification/services/notification.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { NotificationService } from '../../libs/notification/services/notification.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -17,7 +17,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         return next.handle(request).pipe(catchError((requestError) => {
 
-            this.notificationService.error('Server error happened, Try again later', 5000);
+            this.notificationService.showError('Server error happened, Try again later', 5000);
             return throwError(() => new Error(requestError));
 
         }));
