@@ -13,21 +13,21 @@ import { getProfileReducer } from './store/profile.reducers';
 
 @NgModule({
     declarations: [
-        ProfileDetailComponent,
-        LoadingComponent
+        LoadingComponent,
+        ProfileDetailComponent
     ],
     exports: [
-        ProfileDetailComponent,
-        LoadingComponent
+        LoadingComponent,
+        ProfileDetailComponent
     ],
     imports: [
         CommonModule,
+        EffectsModule.forFeature([ProfileEffects]),
         LayoutModule,
         MatCardModule,
         MatDividerModule,
         MatListModule,
-        StoreModule.forFeature('profile', getProfileReducer),
-        EffectsModule.forFeature([ProfileEffects])
+        StoreModule.forFeature('profile', getProfileReducer)
     ]
 })
 export class ProfileModule {
