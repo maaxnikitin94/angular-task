@@ -1,6 +1,6 @@
-<a routerLink="/" class="back-link">Back To Home</a>
+<a class="back-link" routerLink="/">Back To Home</a>
 <h1>List of all users:</h1>
-<table style="width: 1000px; border: 1px solid black">
+<table *ngIf="isLoaded$ | async; else loading" style="width: 1000px; border: 1px solid black">
     <tr>
         <th>NAME</th>
     </tr>
@@ -12,3 +12,6 @@
         </tr>
     </tbody>
 </table>
+<ng-template #loading>
+    <crx-loading></crx-loading>
+</ng-template>

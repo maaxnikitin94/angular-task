@@ -26,6 +26,13 @@ export class RoutingService {
     private history: RouteHistoryMember[] = [];
     private reloading = false;
 
+    constructor (
+        private router: Router,
+        private route: ActivatedRoute,
+        private store: Store<AppState>
+    ) {
+    }
+
     get currentFragment (): string | null {
 
         const tree = this.router.parseUrl(this.router.url);
@@ -147,13 +154,6 @@ export class RoutingService {
 
         return route;
 
-    }
-
-    constructor (
-        private router: Router,
-        private route: ActivatedRoute,
-        private store: Store<AppState>
-    ) {
     }
 
     getQueryParam (key: string): string {

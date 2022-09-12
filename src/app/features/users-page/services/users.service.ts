@@ -15,7 +15,10 @@ export class UsersService {
     getUsers () {
 
         return this.httpClient
-        .get('https://randomuser.me/api/?results=10&exc=gender,login,registered,nat&noinfo&seed=foobar')
+        .get(
+            'https://randomuser.me/api/?results=10&exc=gender,login,registered,nat&noinfo&seed=foobar',
+            { reportProgress: true }
+        )
         .pipe(map(({ results }: any): IUsers[] => results.map((user: any) => ({
             cellNumber: user.cell,
             city: user.location.city,

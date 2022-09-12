@@ -2,7 +2,7 @@
     <div class="header-wrapper">
         <ng-content select=".header"></ng-content>
     </div>
-    <div class="page-wrapper" [ngClass]="{ 'with-background': showBackground }">
+    <div [class.with-background]="showBackground" class="page-wrapper">
         <ng-content></ng-content>
     </div>
 </div>

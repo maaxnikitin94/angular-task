@@ -6,3 +6,4 @@ export const getUsersSuccess = createAction(
     '[Users] Get Users Success',
     props<{ users: IUsers[] }>()
 );
+export const getUsersFail = createAction('[Users] Get Users Fail');

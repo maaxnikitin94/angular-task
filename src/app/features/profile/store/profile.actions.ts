@@ -6,3 +6,4 @@ export const getProfileSuccess = createAction(
     '[Profile] Get Profile Success',
     props<{ profile?: IProfile }>()
 );
+export const getProfileFail = createAction('[Profile] Get Profile Fail');

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { IUsers } from '@features/users-page/interfaces/users';
 import { UsersService } from '@features/users-page/services/users.service';
-import { getUsersPending, getUsersSuccess } from '@features/users-page/store/users.actions';
+import { getUsersFail, getUsersPending, getUsersSuccess } from '@features/users-page/store/users.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class UsersEffects {
@@ -12,7 +13,10 @@ export class UsersEffects {
         this.action$.pipe(
             ofType(getUsersPending),
             switchMap(() => this.usersService.getUsers()
-            .pipe(map((users: IUsers[]) => getUsersSuccess({ users }))))
+            .pipe(
+                map((users: IUsers[]) => getUsersSuccess({ users })),
+                catchError(() => of(getUsersFail))
+            ))
         ));
 
     constructor (private action$: Actions, private usersService: UsersService) {
