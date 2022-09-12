@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { IUsers } from '@features/users-page/interfaces/users';
 import { getUsersPending } from '@features/users-page/store/users.actions';
 import { getUsersFromState } from '@features/users-page/store/users.selectors';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
-import { NotificationService } from '../../libs/notification/services/notification.service';
+import { Observable } from 'rxjs';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,27 +12,17 @@ import { NotificationService } from '../../libs/notification/services/notificati
     templateUrl: './users-page.component.html'
 })
 
-export class UsersPageComponent implements OnInit, OnDestroy {
+export class UsersPageComponent implements OnInit {
 
     public users$: Observable<IUsers[]>;
-    private usersSubscription: Subscription;
 
-    constructor (private store: Store, private notificationService: NotificationService) {
+    constructor (private store: Store) {
     }
 
     ngOnInit () {
 
         this.store.dispatch(getUsersPending());
         this.users$ = this.store.select(getUsersFromState);
-        this.usersSubscription = this.users$.subscribe((value) => value
-            ? this.notificationService.showNotification('Get Profile Success!', 3000, 'green')
-            : null);
-
-    }
-
-    ngOnDestroy () {
-
-        this.usersSubscription.unsubscribe();
 
     }
 
