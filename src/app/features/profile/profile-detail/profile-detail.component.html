@@ -6,7 +6,7 @@
         <mat-card-title-group>
             <mat-card-title>User Profile</mat-card-title>
             <mat-card-subtitle>{{ profile.name.first }} {{ profile.name.last }}</mat-card-subtitle>
-            <img class="circle" mat-card-md-image [src]="profile.picture.medium" />
+            <img [src]="profile.picture.medium" class="circle" mat-card-md-image />
         </mat-card-title-group>
         <mat-card-content>
             <mat-list>
