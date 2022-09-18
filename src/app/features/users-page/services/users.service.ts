@@ -15,13 +15,14 @@ export class UsersService {
     getUsers () {
 
         return this.httpClient
-        .get('https://randomuser.me/api/?results=10&exc=gender,login,registered,nat&noinfo&seed=foobar')
+        .get('https://randomuser.me/api/?results=100&exc=login,registered,nat&noinfo&seed=foobar')
         .pipe(map(({ results }: any): IUsers[] => results.map((user: any) => ({
             cellNumber: user.cell,
             city: user.location.city,
             dateOfBirth: user.dob.date,
             email: user.email,
             firstName: user.name.first,
+            gender: user.gender,
             id: user.id.name,
             lastName: user.name.last,
             phoneNumber: user.phone,
@@ -34,7 +35,7 @@ export class UsersService {
     getProfile () {
 
         return this.httpClient
-        .get('https://randomuser.me/api/?results=1&exc=gender,login,registered,nat&noinfo&seed=foobar')
+        .get('https://randomuser.me/api/?results=1&exc=login,registered,nat&noinfo&seed=foobar')
         .pipe(map(({ results }: any): IProfile => results[0]));
 
     }
