@@ -33,7 +33,7 @@ export class UsersService {
 
     }
 
-    getUser (id: string): Observable<Profile> {
+    getUser (id: string = ''): Observable<Profile> {
 
         return this.httpClient
         .get('https://randomuser.me/api/?results=1&exc=gender,login,registered,nat&noinfo&seed=foobar&' + id)

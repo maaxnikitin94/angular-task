@@ -11,7 +11,7 @@ export class ProfileEffects {
     getProfile$ = createEffect(() =>
         this.action$.pipe(
             ofType(getProfilePending),
-            switchMap(() => this.usersService.getUser('')
+            switchMap(() => this.usersService.getUser()
             .pipe(map((profile: Profile) => getProfileSuccess({ profile }))))
         ));
 

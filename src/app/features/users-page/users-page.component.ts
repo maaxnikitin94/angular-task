@@ -22,4 +22,10 @@ export class UsersPageComponent {
 
     }
 
+    userTrackById (index: number, user: User) {
+
+        return user.id;
+
+    }
+
 }

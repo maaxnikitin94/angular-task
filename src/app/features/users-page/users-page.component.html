@@ -1,11 +1,11 @@
 <a routerLink="/" class="back-link">Back To Home</a>
 <h1>List of all users:</h1>
-<table class="table-wrapper">
+<table class="user-table">
     <tr>
         <th>NAME</th>
     </tr>
     <tbody *ngIf="users$ | async as users">
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users; trackBy: userTrackById">
             <th>
                 <a [routerLink]="['/profile/' + user.id]">{{ user.firstName }}</a>
             </th>
