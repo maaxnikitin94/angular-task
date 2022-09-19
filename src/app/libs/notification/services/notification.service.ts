@@ -10,7 +10,7 @@ export class NotificationService {
     constructor (private _snackBar: MatSnackBar) {
     }
 
-    showError (message: string, duration: number) {
+    showError (message: string, duration: number = 5000) {
 
         this._snackBar.openFromComponent(NotificationComponent, {
             data: message,

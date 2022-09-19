@@ -4,17 +4,17 @@
     font-size: 15px;
 }
 
-::ng-deep .snack-style-red {
+.snack-style-red {
     @include snack-style();
     background-color: red;
 }
 
-::ng-deep .snack-style-green {
+.snack-style-green {
     @include snack-style();
     background-color: green;
 }
 
-::ng-deep .snack-style-yellow {
+.snack-style-yellow {
     @include snack-style();
     background-color: yellow;
 }

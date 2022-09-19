@@ -1,15 +1,12 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
     selector: 'crx-notification',
     styleUrls: ['./notification.component.scss'],
-    template: `
-        <div>
-            {{data}}
-        </div>
-    `
+    template: `{{data}}`
 })
 export class NotificationComponent {
 
