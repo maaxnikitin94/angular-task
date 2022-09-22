@@ -43,12 +43,12 @@ export class UsersPageComponent implements OnInit {
 
         const filters = filterModal.controls;
 
-        if (filters.gender.value !== '') {
+        if (filters.gender.value) {
 
             this.users$ = this.users$.pipe(map((users) =>
                 users?.filter((user) => user.gender === filters.gender.value)));
 
-        } else if (filters.state.value !== '') {
+        } else if (filters.state.value) {
 
             this.users$ = this.users$.pipe(map((users) =>
                 users?.filter((user) => user.state === filters.state.value)));
