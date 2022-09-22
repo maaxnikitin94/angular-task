@@ -1,4 +1,4 @@
-export interface ReferenceModel {
+export interface GenderModel {
     id: string;
     name: string;
 }

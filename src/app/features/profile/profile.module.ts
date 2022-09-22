@@ -19,12 +19,12 @@ import { getProfileReducer } from './store/profile.reducers';
     ],
     imports: [
         CommonModule,
+        EffectsModule.forFeature([ProfileEffects]),
         LayoutModule,
         MatCardModule,
         MatDividerModule,
         MatListModule,
-        StoreModule.forFeature('profile', getProfileReducer),
-        EffectsModule.forFeature([ProfileEffects])
+        StoreModule.forFeature('profile', getProfileReducer)
     ]
 })
 export class ProfileModule {

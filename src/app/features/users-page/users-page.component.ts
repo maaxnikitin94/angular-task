@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { FilterModel } from '@features/filter-bar/interfaces/filter-model';
+import { FormGroup } from '@angular/forms';
 import { IUsers } from '@features/users-page/interfaces/users';
 import { getUsersPending } from '@features/users-page/store/users.actions';
 import { getUsersFromState } from '@features/users-page/store/users.selectors';
@@ -39,22 +39,24 @@ export class UsersPageComponent implements OnInit {
 
     }
 
-    applyFilters (event: FilterModel) {
+    applyFilters (filterModal: FormGroup) {
 
-        if (event.byGender) {
+        const filters = filterModal.controls;
 
-            this.users$ = this.users$.pipe(map((users) =>
-                users?.filter((user) => user.gender === event.byGender)));
-
-        } else if (event.byState) {
+        if (filters.gender.value !== '') {
 
             this.users$ = this.users$.pipe(map((users) =>
-                users?.filter((user) => user.state === event.byState)));
+                users?.filter((user) => user.gender === filters.gender.value)));
 
-        } else if (event.byDate.value.start && event.byDate.touched) {
+        } else if (filters.state.value !== '') {
 
-            const end: any = new Date(event.byDate.value.end).getTime();
-            const start: any = new Date(event.byDate.value.start).getTime();
+            this.users$ = this.users$.pipe(map((users) =>
+                users?.filter((user) => user.state === filters.state.value)));
+
+        } else if (filters.dateStart.value) {
+
+            const end: any = new Date(filters.dateEnd.value).getTime();
+            const start: any = new Date(filters.dateStart.value).getTime();
             this.users$ = this.store.select(getUsersFromState).pipe(map((users) =>
                 users?.filter((user) => {
 

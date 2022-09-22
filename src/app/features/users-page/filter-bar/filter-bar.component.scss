@@ -1,0 +1,28 @@
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 20px 50px;
+    background-color: darkslategrey;
+}
+
+.filters-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    & mat-form-field {
+        background-color: white;
+    }
+
+    & .state-input, .gender-input {
+        height: 20px;
+    }
+}
+
+.button-apply {
+    height: 50px;
+    margin-top: 20px;
+    padding: 5px 30px;
+    cursor: pointer;
+}
