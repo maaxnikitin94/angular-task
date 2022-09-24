@@ -19,11 +19,7 @@
         class="state-input"
     />
     <mat-autocomplete #autoGroup="matAutocomplete">
-        <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-            <mat-option *ngFor="let name of group.names" [value]="name">
-                {{ name }}
-            </mat-option>
-        </mat-optgroup>
+        <mat-option *ngFor="let state of stateGroupOptions | async" [value]="state.name">{{ state.name }} </mat-option>
     </mat-autocomplete>
 
     <input

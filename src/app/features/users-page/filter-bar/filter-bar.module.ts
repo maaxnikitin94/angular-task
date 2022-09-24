@@ -6,6 +6,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterBarComponent } from '@features/users-page/filter-bar/filter-bar.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { FilterBarComponent } from '@features/users-page/filter-bar/filter-bar.c
         MatDatepickerModule,
         MatNativeDateModule,
         MatFormFieldModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatSelectModule
     ]
 })
 export class FilterBarModule {

@@ -1,36 +1,31 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import { StateGroup } from '@features/users-page/filter-bar/interfaces/state-group';
-import { stateGroups } from '@features/users-page/filter-bar/data-for-filters/state-groups';
 
 @Injectable({
     providedIn: 'root'
 })
 export class StateGroupsService {
 
-    stateGroups = stateGroups;
+    constructor (private httpClient: HttpClient) {
+    }
 
-    filterState = (opt: string[], value: string): string[] => {
+    getStates (value?: string) {
 
-        const filterValue = value.toLowerCase();
+        return this.httpClient
+        .get('https://gist.githubusercontent.com/shawnbot/ab11ace1bafa23be290c193049a71cb5/raw/f5e9c2788d2221fe4afe1930567c2cbe60c7e77a/states-array.json')
+        .pipe(map((states: StateGroup[]) => {
 
-        return opt.filter((item) => item.toLowerCase().includes(filterValue));
+            if (value) {
 
-    };
+                return states.filter((state) => state.name.toLowerCase().includes(value));
 
-    filterStateGroup (value: string): StateGroup[] {
+            }
 
-        if (value) {
+            return states;
 
-            return this.stateGroups
-            .map((group) => ({
-                letter: group.letter,
-                names: this.filterState(group.names, value)
-            }))
-            .filter((group) => group.names.length > 0);
-
-        }
-
-        return this.stateGroups;
+        }));
 
     }
 

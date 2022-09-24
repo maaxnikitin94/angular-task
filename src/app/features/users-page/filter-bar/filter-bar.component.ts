@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 import { genderOptions } from './data-for-filters/gender-options';
 import { GenderModel } from './interfaces/gender-model';
-import { StateGroup } from './interfaces/state-group';
-import { StateGroupsService } from './services/state-groups.service';
+import { StateGroupsService } from '@features/users-page/filter-bar/services/state-groups.service';
+import { Observable } from 'rxjs';
+import { StateGroup } from '@features/users-page/filter-bar/interfaces/state-group';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,20 +25,23 @@ export class FilterBarComponent implements OnInit {
     });
 
     genderOptions = genderOptions;
+
     stateGroupOptions: Observable<StateGroup[]>;
 
     constructor (private stateGroupsService: StateGroupsService) {
     }
 
+    genderTrackBy = (index: number, item: GenderModel) => item;
+
     ngOnInit () {
 
-        this.stateGroupOptions = this.filtersForm.get('state')!.valueChanges.pipe(
-            startWith(''),
-            map((value) => this.stateGroupsService.filterStateGroup(value || ''))
-        );
+        this.stateGroupOptions = this.stateGroupsService.getStates();
+        this.filtersForm.get('state').valueChanges.subscribe((value) => {
+
+            this.stateGroupOptions = this.stateGroupsService.getStates(value);
+
+        });
 
     }
-
-    genderTrackBy = (index: number, item: GenderModel) => item;
 
 }
