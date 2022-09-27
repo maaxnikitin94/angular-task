@@ -44,4 +44,13 @@ export class FilterBarComponent implements OnInit {
 
     }
 
+    clickApply () {
+
+        const filters = Object.entries(this.filtersForm.getRawValue())
+        .filter(([type, value]) => !!value)
+        .map(([type, value]) => ({ type, value }));
+        this.apply.emit(filters);
+
+    }
+
 }
