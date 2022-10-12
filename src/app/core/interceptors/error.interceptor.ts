@@ -17,7 +17,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         return next.handle(request).pipe(catchError((requestError) => {
 
-            this.notificationService.showError('Server error happened, Try again later');
+            this.notificationService.showError('Server error happened, Try again later', 3000);
             return throwError(() => new Error(requestError));
 
         }));

@@ -1,10 +1,14 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
-import { ErrorInterceptor } from '@core/interceptors/error.interceptor';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotificationComponent } from './components/notification.component';
+import { MatIconModule } from '@angular/material/icon';
 
-@NgModule({})
+@NgModule({
+    imports: [
+        MatIconModule,
+        MatSnackBarModule
+    ]
+})
 export class NotificationsModule {
 
     static forRoot (): ModuleWithProviders<NotificationsModule> {
@@ -13,14 +17,9 @@ export class NotificationsModule {
             ngModule: NotificationsModule,
             providers: [
                 {
-                    multi: true,
-                    provide: HTTP_INTERCEPTORS,
-                    useClass: ErrorInterceptor
-                },
-                {
                     provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
                     useClass: NotificationComponent,
-                    useValue: { duration: 0 }
+                    useValue: {}
                 }
             ]
         };

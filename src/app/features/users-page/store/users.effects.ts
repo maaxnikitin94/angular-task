@@ -17,7 +17,7 @@ export class UsersEffects {
 
                 if (users) {
 
-                    this.notificationService.showNotification('Get Users Success!', 3000);
+                    this.notificationService.showNotification('Get Users Success!');
                     return getUsersSuccess({ users });
 
                 } else {

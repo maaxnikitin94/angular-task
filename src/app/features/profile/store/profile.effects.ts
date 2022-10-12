@@ -17,7 +17,7 @@ export class ProfileEffects {
 
                 if (profile) {
 
-                    this.notificationService.showNotification('Get Profile Success!', 3000, 'yellow');
+                    this.notificationService.showNotification('Get Profile Success!', 'yellow');
                     return getProfileSuccess({ profile });
 
                 } else {

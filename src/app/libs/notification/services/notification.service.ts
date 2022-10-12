@@ -10,7 +10,7 @@ export class NotificationService {
     constructor (private _snackBar: MatSnackBar) {
     }
 
-    showError (message: string, duration: number = 5000) {
+    showError (message: string, duration: number) {
 
         this._snackBar.openFromComponent(NotificationComponent, {
             data: message,
@@ -21,7 +21,7 @@ export class NotificationService {
 
     }
 
-    showNotification (message: string, duration: number, color: 'red' | 'green' | 'yellow' = 'green') {
+    showNotification (message: string, color: 'red' | 'green' | 'yellow' = 'green', duration = 3000) {
 
         this._snackBar.openFromComponent(NotificationComponent, {
             data: message,

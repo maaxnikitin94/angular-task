@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { LayoutModule } from '@core/layout/layout.module';
@@ -29,8 +27,6 @@ import { ProfileModule } from './profile/profile.module';
         EffectsModule.forFeature([UsersEffects]),
         HttpClientModule,
         LayoutModule,
-        MatIconModule,
-        MatSnackBarModule,
         ProfileModule,
         RouterModule,
         StoreModule.forFeature('users', reducer)
