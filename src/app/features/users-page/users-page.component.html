@@ -7,7 +7,7 @@
     <tbody *ngIf="users$ | async as users">
         <tr *ngFor="let user of users; trackBy: userTrackById">
             <th>
-                <a [routerLink]="['/profile/' + user.id]">{{ user.firstName }}</a>
+                <a [routerLink]="['/profile', user.id]">{{ user.firstName }}</a>
             </th>
         </tr>
     </tbody>
