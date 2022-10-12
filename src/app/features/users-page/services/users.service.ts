@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IProfile } from '@features/profile/interfaces/profile';
 import { IUsers } from '@features/users-page/interfaces/users';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class UsersService {
     constructor (private httpClient: HttpClient) {
     }
 
-    getUsers () {
+    getUsers (): Observable<IUsers[]> {
 
         return this.httpClient
         .get('https://randomuser.me/api/?results=100&exc=login,registered,nat&noinfo&seed=foobar')
@@ -32,7 +33,7 @@ export class UsersService {
 
     }
 
-    getProfile () {
+    getProfile (): Observable<IProfile> {
 
         return this.httpClient
         .get('https://randomuser.me/api/?results=1&exc=login,registered,nat&noinfo&seed=foobar')

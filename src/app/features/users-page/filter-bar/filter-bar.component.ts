@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { genderOptions } from './data-for-filters/gender-options';
-import { GenderModel } from './interfaces/gender-model';
-import { StateGroupsService } from '@features/users-page/filter-bar/services/state-groups.service';
 import { Observable } from 'rxjs';
-import { StateGroup } from '@features/users-page/filter-bar/interfaces/state-group';
+import { StateGroup } from '../filter-bar/interfaces/state-group';
+import { StateGroupsService } from '../filter-bar/services/state-groups.service';
+import { GENDER_OPTIONS } from './data-for-filters/gender-options';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,6 +15,8 @@ import { StateGroup } from '@features/users-page/filter-bar/interfaces/state-gro
 export class FilterBarComponent implements OnInit {
 
     @Output() apply = new EventEmitter();
+    genderOptions = GENDER_OPTIONS;
+    stateGroupOptions: Observable<StateGroup[]>;
 
     filtersForm: FormGroup = new FormGroup({
         dateEnd: new FormControl(null),
@@ -24,14 +25,8 @@ export class FilterBarComponent implements OnInit {
         state: new FormControl('')
     });
 
-    genderOptions = genderOptions;
-
-    stateGroupOptions: Observable<StateGroup[]>;
-
     constructor (private stateGroupsService: StateGroupsService) {
     }
-
-    genderTrackBy = (index: number, item: GenderModel) => item;
 
     ngOnInit () {
 

@@ -4,7 +4,7 @@ export interface IUsers {
     dateOfBirth: string;
     email: string;
     firstName: string;
-    gender: string;
+    gender: 'male' | 'female' | 'other';
     id: string;
     lastName: string;
     phoneNumber: string;

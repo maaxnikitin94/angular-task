@@ -1,4 +1,4 @@
-export interface CompareFilters {
+export interface UsersFilter {
     type?: string,
     value?: string
 }

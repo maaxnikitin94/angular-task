@@ -31,8 +31,8 @@
         class="gender-input"
     />
     <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of genderOptions; trackBy: genderTrackBy" [value]="option.id">
-            {{ option.name }}
+        <mat-option *ngFor="let option of genderOptions" [value]="option">
+            {{ option }}
         </mat-option>
     </mat-autocomplete>
 </form>

@@ -1,30 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IUsers } from '@features/users-page/interfaces/users';
-import { getUsersPending } from '@features/users-page/store/users.actions';
-import { getUsersFromState } from '@features/users-page/store/users.selectors';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CompareFilters } from '@features/users-page/filter-bar/interfaces/compare-filters';
-
-function compareUserFilter (user: IUsers, { type, value }: CompareFilters) {
-
-    switch (type) {
-
-        case 'state':
-            return user.state === value;
-        case 'gender':
-            return user.gender === value;
-        case 'dateStart':
-            return new Date(user.dateOfBirth).getTime() > new Date(value).getTime();
-        case 'dateEnd':
-            return new Date(user.dateOfBirth).getTime() < new Date(value).getTime();
-
-    }
-
-    return false;
-
-}
+import { UsersFilterService } from '../users-page/filter-bar/services/users-filter.service';
+import { IUsers } from '../users-page/interfaces/users';
+import { getUsersPending } from '../users-page/store/users.actions';
+import { getUsersFromState } from '../users-page/store/users.selectors';
+import { UsersFilter } from './filter-bar/interfaces/users-filter';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,19 +15,25 @@ function compareUserFilter (user: IUsers, { type, value }: CompareFilters) {
     templateUrl: './users-page.component.html'
 })
 
-export class UsersPageComponent {
+export class UsersPageComponent implements OnInit {
 
-    private filters$ = new BehaviorSubject<CompareFilters[]>([]);
+    private filters$ = new BehaviorSubject<UsersFilter[]>([]);
     public filterIsOpen = false;
-    public users$: Observable<IUsers[]> = combineLatest([
-        this.store.select(getUsersFromState),
-        this.filters$
-    ]).pipe(map(([users, filters]) => filters.length ? users.filter((user) =>
-        filters.reduce((acc, filter) => acc && compareUserFilter(user, filter), true)) : users));
+    public users$: Observable<IUsers[]>;
 
-    constructor (private store: Store) {
+    constructor (private store: Store, private filterService: UsersFilterService) {
 
         this.store.dispatch(getUsersPending());
+
+    }
+
+    ngOnInit () {
+
+        this.users$ = combineLatest([
+            this.store.select(getUsersFromState),
+            this.filters$
+        ]).pipe(map(([users, filters]) =>
+            filters.length ? this.filterService.filterUsers(users, filters) : users));
 
     }
 
@@ -55,7 +43,7 @@ export class UsersPageComponent {
 
     }
 
-    applyFilters (value: CompareFilters[]) {
+    applyFilters (value: UsersFilter[]) {
 
         this.filters$.next(value);
 

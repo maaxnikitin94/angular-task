@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from '@core/core.module';
 import { FeaturesModule } from '@features/features.module';
-import { HomeModule } from '@features/home-page/home.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -15,8 +14,7 @@ import { AppComponent } from './app.component';
     imports: [
         BrowserModule,
         CoreModule,
-        FeaturesModule,
-        HomeModule
+        FeaturesModule
     ]
 })
 export class AppModule {
